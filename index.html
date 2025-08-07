@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Penampil Persyaratan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 5px;
+      cursor: pointer;
+      background-color: #f9f9f9;
+    }
+    li:hover {
+      background-color: #e0f7fa;
+    }
+    #imageDisplay {
+      margin-top: 20px;
+    }
+    #imageDisplay img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Daftar Persyaratan</h2>
+  <ul id="requirementList">
+    <li data-image="img/UPB.JPG">1. Persyaratan Usul Pensiun BUP</li>
+    <li data-image="img/UPJDY.JPG">2. Persyaratan Usul Pensiun Janda / Duda / Yatim</li>
+    <li data-image="img/UPA.JPG">3. Persyaratan Usul Pensiun APS</li>
+    <li data-image="img/UPM.JPG">4. Persyaratan Usul Pensiun MPP</li>
+    <li data-image="img/UPU.JPG">5. Persyaratan Usul Pensiun UZUR</li>
+  </ul>
+
+  <div id="imageDisplay">
+    <p><strong>Gambar persyaratan akan muncul di sini.</strong></p>
+  </div>
+
+  <script>
+    const listItems = document.querySelectorAll("#requirementList li");
+    const imageDisplay = document.getElementById("imageDisplay");
+
+    listItems.forEach(item => {
+      item.addEventListener("click", () => {
+        const imageUrl = item.getAttribute("data-image");
+        imageDisplay.innerHTML = `<img src="${imageUrl}" alt="Persyaratan">`;
+      });
+    });
+  </script>
+
+</body>
+</html>
