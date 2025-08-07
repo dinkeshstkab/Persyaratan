@@ -2,78 +2,61 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Persyaratan</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 16px;
-      box-sizing: border-box;
-      background-color: #fdfdfd;
+      padding: 0;
     }
-
-    h2 {
-      font-size: 1.5rem;
-      text-align: center;
-      margin-bottom: 20px;
+    #listView, #detailView {
+      display: none;
+      padding: 20px;
     }
-
+    #listView {
+      display: block;
+    }
     ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
-
     li {
-      padding: 12px;
-      margin-bottom: 10px;
+      padding: 15px;
       border: 1px solid #ccc;
-      border-radius: 6px;
-      background-color: #f0f0f0;
+      margin-bottom: 10px;
       cursor: pointer;
-      transition: background-color 0.2s;
+      background-color: #f0f0f0;
+      border-radius: 8px;
     }
-
     li:hover {
       background-color: #e0f7fa;
     }
-
     #detailView {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: white;
-      z-index: 999;
-      display: none;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      box-sizing: border-box;
-      overflow-y: auto;
+      min-height: 100vh;
+      background-color: white;
     }
-
-    #detailView img {
+    #detailImage {
       width: 100%;
-      max-width: 600px;
       height: auto;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      max-height: 90vh;
+      object-fit: contain;
     }
-
     #backBtn {
+      margin-top: 20px;
       padding: 12px 24px;
-      font-size: 1rem;
       background-color: #2196f3;
       color: white;
       border: none;
-      border-radius: 6px;
       cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
     }
-
     #backBtn:hover {
       background-color: #1976d2;
     }
@@ -83,7 +66,7 @@
 
   <div id="listView">
     <h2>Daftar Persyaratan</h2>
-    <ul id="listItems">
+    <ul>
       <li data-image="img/UPB.png">1. Persyaratan Usul Pensiun BUP</li>
       <li data-image="img/UPJDY.png">2. Persyaratan Usul Pensiun Janda / Duda / Yatim</li>
       <li data-image="img/UPA.png">3. Persyaratan Usul Pensiun APS</li>
@@ -98,24 +81,23 @@
   </div>
 
   <script>
-    const listItems = document.querySelectorAll("#listItems li");
-    const detailView = document.getElementById("detailView");
-    const listView = document.getElementById("listView");
-    const detailImage = document.getElementById("detailImage");
+    const listView = document.getElementById('listView');
+    const detailView = document.getElementById('detailView');
+    const detailImage = document.getElementById('detailImage');
 
-    listItems.forEach(item => {
-      item.addEventListener("click", () => {
-        const imageSrc = item.getAttribute("data-image");
-        detailImage.src = imageSrc;
-        listView.style.display = "none";
-        detailView.style.display = "flex";
+    document.querySelectorAll('li').forEach(item => {
+      item.addEventListener('click', () => {
+        const imgSrc = item.getAttribute('data-image');
+        detailImage.src = imgSrc;
+        listView.style.display = 'none';
+        detailView.style.display = 'flex';
       });
     });
 
     function goBack() {
-      detailImage.src = "";
-      detailView.style.display = "none";
-      listView.style.display = "block";
+      detailImage.src = '';
+      detailView.style.display = 'none';
+      listView.style.display = 'block';
     }
   </script>
 
