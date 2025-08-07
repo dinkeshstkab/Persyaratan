@@ -2,61 +2,78 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Persyaratan</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 16px;
+      box-sizing: border-box;
+      background-color: #fdfdfd;
     }
-    #listView, #detailView {
-      display: none;
+
+    h2 {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 20px;
     }
-    #listView {
-      display: block;
-    }
+
     ul {
       list-style: none;
       padding: 0;
     }
+
     li {
-      padding: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
       border: 1px solid #ccc;
-      margin-bottom: 5px;
-      cursor: pointer;
+      border-radius: 6px;
       background-color: #f0f0f0;
+      cursor: pointer;
+      transition: background-color 0.2s;
     }
+
     li:hover {
       background-color: #e0f7fa;
     }
+
     #detailView {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       background-color: white;
-      z-index: 10;
-      display: flex;
+      z-index: 999;
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;
       box-sizing: border-box;
+      overflow-y: auto;
     }
+
     #detailView img {
-      max-width: 100%;
-      max-height: 80vh;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
       margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
     }
+
     #backBtn {
-      padding: 10px 20px;
+      padding: 12px 24px;
+      font-size: 1rem;
       background-color: #2196f3;
       color: white;
       border: none;
+      border-radius: 6px;
       cursor: pointer;
-      border-radius: 5px;
     }
+
     #backBtn:hover {
       background-color: #1976d2;
     }
@@ -81,24 +98,24 @@
   </div>
 
   <script>
-    const listView = document.getElementById('listView');
-    const detailView = document.getElementById('detailView');
-    const detailImage = document.getElementById('detailImage');
+    const listItems = document.querySelectorAll("#listItems li");
+    const detailView = document.getElementById("detailView");
+    const listView = document.getElementById("listView");
+    const detailImage = document.getElementById("detailImage");
 
-    // Tambahkan event listener ke semua item <li>
-    document.querySelectorAll('#listItems li').forEach(item => {
-      item.addEventListener('click', () => {
-        const imageSrc = item.getAttribute('data-image');
+    listItems.forEach(item => {
+      item.addEventListener("click", () => {
+        const imageSrc = item.getAttribute("data-image");
         detailImage.src = imageSrc;
-        listView.style.display = 'none';
-        detailView.style.display = 'flex';
+        listView.style.display = "none";
+        detailView.style.display = "flex";
       });
     });
 
     function goBack() {
-      detailImage.src = '';
-      detailView.style.display = 'none';
-      listView.style.display = 'block';
+      detailImage.src = "";
+      detailView.style.display = "none";
+      listView.style.display = "block";
     }
   </script>
 
