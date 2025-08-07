@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Persyaratan</title>
@@ -63,22 +64,31 @@
       background-color: #1976d2;
     }
     #btnBack {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #4caf50;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
 #btnBack:hover {
-  background-color: #388e3c;
+  background: linear-gradient(135deg, #43a047, #1b5e20);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
   </style>
 </head>
 <body>
-<a href="https://dinkes.hstkab.go.id/" id="btnBack">⬅️ Web Dinas Kesehatan HST</a>
+<a href="https://dinkes.hstkab.go.id/" id="btnBack">
+  <i class="bi bi-arrow-left-circle"></i> Web Dinas Kesehatan Kab.HST
+</a>
   <div id="listView">
     <h2>Daftar Persyaratan</h2>
     <ul>
