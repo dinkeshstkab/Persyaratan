@@ -2,11 +2,18 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Penampil Persyaratan</title>
+  <title>Persyaratan</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
       padding: 20px;
+    }
+    #listView, #detailView {
+      display: none;
+    }
+    #listView {
+      display: block;
     }
     ul {
       list-style: none;
@@ -17,47 +24,78 @@
       border: 1px solid #ccc;
       margin-bottom: 5px;
       cursor: pointer;
-      background-color: #f9f9f9;
+      background-color: #f0f0f0;
     }
     li:hover {
       background-color: #e0f7fa;
     }
-    #imageDisplay {
-      margin-top: 20px;
+    #detailView {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
-    #imageDisplay img {
+    #detailView img {
       max-width: 100%;
-      height: auto;
-      border: 1px solid #ddd;
-      padding: 5px;
+      max-height: 80vh;
+      margin-bottom: 20px;
+    }
+    #backBtn {
+      padding: 10px 20px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #backBtn:hover {
+      background-color: #1976d2;
     }
   </style>
 </head>
 <body>
 
-  <h2>Daftar Persyaratan</h2>
-  <ul id="requirementList">
+  <div id="listView">
+    <h2>Daftar Persyaratan</h2>
+    <ul>
     <li data-image="img/UPB.JPG">1. Persyaratan Usul Pensiun BUP</li>
     <li data-image="img/UPJDY.JPG">2. Persyaratan Usul Pensiun Janda / Duda / Yatim</li>
     <li data-image="img/UPA.JPG">3. Persyaratan Usul Pensiun APS</li>
     <li data-image="img/UPM.JPG">4. Persyaratan Usul Pensiun MPP</li>
     <li data-image="img/UPU.JPG">5. Persyaratan Usul Pensiun UZUR</li>
-  </ul>
+    </ul>
+  </div>
 
-  <div id="imageDisplay">
-    <p><strong>Gambar persyaratan akan muncul di sini.</strong></p>
+  <div id="detailView">
+    <img id="detailImage" src="" alt="Persyaratan">
+    <button id="backBtn" onclick="goBack()">Kembali</button>
   </div>
 
   <script>
-    const listItems = document.querySelectorAll("#requirementList li");
-    const imageDisplay = document.getElementById("imageDisplay");
+    const listView = document.getElementById('listView');
+    const detailView = document.getElementById('detailView');
+    const detailImage = document.getElementById('detailImage');
 
-    listItems.forEach(item => {
-      item.addEventListener("click", () => {
-        const imageUrl = item.getAttribute("data-image");
-        imageDisplay.innerHTML = `<img src="${imageUrl}" alt="Persyaratan">`;
-      });
-    });
+    function showDetail(imageSrc) {
+      detailImage.src = imageSrc;
+      listView.style.display = 'none';
+      detailView.style.display = 'flex';
+    }
+
+    function goBack() {
+      detailImage.src = '';
+      detailView.style.display = 'none';
+      listView.style.display = 'block';
+    }
   </script>
 
 </body>
