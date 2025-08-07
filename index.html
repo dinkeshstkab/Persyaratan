@@ -66,12 +66,12 @@
 
   <div id="listView">
     <h2>Daftar Persyaratan</h2>
-    <ul>
-    <li data-image="img/UPB.JPG">1. Persyaratan Usul Pensiun BUP</li>
-    <li data-image="img/UPJDY.JPG">2. Persyaratan Usul Pensiun Janda / Duda / Yatim</li>
-    <li data-image="img/UPA.JPG">3. Persyaratan Usul Pensiun APS</li>
-    <li data-image="img/UPM.JPG">4. Persyaratan Usul Pensiun MPP</li>
-    <li data-image="img/UPU.JPG">5. Persyaratan Usul Pensiun UZUR</li>
+    <ul id="listItems">
+      <li data-image="img/UPB.JPG">1. Persyaratan Usul Pensiun BUP</li>
+      <li data-image="img/UPJDY.JPG">2. Persyaratan Usul Pensiun Janda / Duda / Yatim</li>
+      <li data-image="img/UPA.JPG">3. Persyaratan Usul Pensiun APS</li>
+      <li data-image="img/UPM.JPG">4. Persyaratan Usul Pensiun MPP</li>
+      <li data-image="img/UPU.JPG">5. Persyaratan Usul Pensiun UZUR</li>
     </ul>
   </div>
 
@@ -85,11 +85,15 @@
     const detailView = document.getElementById('detailView');
     const detailImage = document.getElementById('detailImage');
 
-    function showDetail(imageSrc) {
-      detailImage.src = imageSrc;
-      listView.style.display = 'none';
-      detailView.style.display = 'flex';
-    }
+    // Tambahkan event listener ke semua item <li>
+    document.querySelectorAll('#listItems li').forEach(item => {
+      item.addEventListener('click', () => {
+        const imageSrc = item.getAttribute('data-image');
+        detailImage.src = imageSrc;
+        listView.style.display = 'none';
+        detailView.style.display = 'flex';
+      });
+    });
 
     function goBack() {
       detailImage.src = '';
