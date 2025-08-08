@@ -66,28 +66,49 @@
     #btnBack {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 12px 20px;
-  font-size: 16px;
-  font-weight: 500;
-  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #43cea2, #185a9d);
   color: white;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 50px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
 
 #btnBack:hover {
-  background: linear-gradient(135deg, #43a047, #1b5e20);
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 600px) {
+  #btnBack {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}
+    #rotateHint {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+  max-width: 90%;
+}
+
+@media (min-width: 768px) {
+  /* Hilangkan teks ini di tablet/desktop */
+  #rotateHint {
+    display: none;
+  }
 }
   </style>
 </head>
 <body>
 <a href="https://dinkes.hstkab.go.id/" id="btnBack">
-  <i class="bi bi-arrow-left-circle"></i> Web Dinas Kesehatan Kab.HST
+  <i class="bi bi-heart-pulse-fill"></i> Web Dinas Kesehatan Kab. HST
 </a>
   <div id="listView">
     <h2>Daftar Persyaratan</h2>
@@ -102,6 +123,7 @@
 
   <div id="detailView">
     <img id="detailImage" src="" alt="Persyaratan">
+    <p id="rotateHint">💡 Miringkan HP ke mode landscape agar gambar terlihat penuh</p>
     <button id="backBtn" onclick="goBack()">Kembali</button>
   </div>
 
